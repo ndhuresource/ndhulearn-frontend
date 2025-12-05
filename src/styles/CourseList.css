@@ -1,0 +1,31 @@
+.course-list-container {
+  margin-top: 2rem;
+}
+
+.course-list-header {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.course-list-header h2 {
+  margin: 0;
+  color: #222;
+  font-size: 1.8rem;
+}
+
+.course-list-header p {
+  color: #666;
+  margin-top: 0.3rem;
+}
+
+.course-list-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.course-list-empty {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  margin-top: 1rem;
+}

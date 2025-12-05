@@ -1,0 +1,157 @@
+/* 共用外框 */
+.auth-container {
+  max-width: 560px;
+  margin: 3rem auto;
+  padding: 1.5rem 1.25rem;
+  background: rgba(255,255,255,.95);
+  border-radius: 16px;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  backdrop-filter: blur(2px);
+}
+
+/* 標題 */
+.auth-container h2 {
+  margin: 0 0 1rem;
+  font-weight: 800;
+  letter-spacing: .02em;
+}
+
+/* 表單 */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+
+/* label */
+.auth-label {
+  font-size: .92rem;
+  color: #333;
+  margin-bottom: .25rem;
+}
+
+/* 輸入框 */
+.auth-form input {
+  width: 100%;
+  padding: .7rem .8rem;
+  border: 1px solid #d7dbe1;
+  border-radius: 10px;
+  outline: none;
+  font-size: 1rem;
+  background: #fff;
+  /* 確保 padding 不會撐大寬度 */
+  box-sizing: border-box; 
+}
+.auth-form input:focus {
+  border-color: #1a73e8;
+  box-shadow: 0 0 0 3px rgba(26,115,232,.15);
+}
+
+/* 主要按鈕 */
+.auth-primary {
+  padding: .75rem 1rem;
+  border: none;
+  background: #1a73e8;
+  color: #fff;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.auth-primary:hover { background: #0f5ed1; }
+/* 禁用狀態 */
+.auth-primary:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* 次要/幽靈按鈕 */
+.btn-ghost {
+  background: transparent;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #555;
+  cursor: pointer;
+}
+.btn-ghost:hover:not(:disabled) {
+  background: #f0f0f0;
+}
+.btn-ghost:disabled {
+  color: #ccc;
+  border-color: #eee;
+  cursor: not-allowed;
+}
+
+/* 連結列 */
+.auth-links {
+  margin-top: .25rem;
+  display: flex;
+  gap: .75rem;
+  font-size: .95rem;
+}
+.auth-links a {
+  color: #1a73e8;
+  text-decoration: none;
+}
+.auth-links a:hover {
+  text-decoration: underline;
+}
+
+/* 頭貼預覽 */
+.avatar-preview {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e6eaf0;
+}
+
+/* 沒上傳頭貼時的占位 */
+.avatar-skeleton {
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  color: #777;
+  background: #f2f4f7;
+  border: 2px dashed #d9dee6;
+}
+
+/* 個人檔案排版 */
+.profile-row {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+.profile-field { margin-bottom: .25rem; }
+
+/* 🔥 修改重點：學號 + 固定網域並排顯示 */
+.inline-email {
+  /* 改用 Flexbox 以便精確控制間距 */
+  display: flex; 
+  /* 讓輸入框和後綴垂直置中對齊 */
+  align-items: center; 
+  /* 增加學號框和後綴之間的空隙 */
+  gap: 10px; 
+  /* 確保撐滿父容器 */
+  width: 100%; 
+}
+
+/* 輸入框在 inline-email 裡面的行為由 JSX 的 style={{flex:1}} 控制，
+   但這裡加上 text-align: left 確保文字靠左 */
+.inline-email input { text-align: left; }
+
+.inline-domain {
+  padding: .6rem .8rem;
+  border: 1px solid #d7dbe1;
+  border-radius: 10px;
+  background: #f7f9fc;
+  color: #3a3f47;
+  white-space: nowrap;
+  font-size: .95rem;
+  /* 確保高度跟 input 差不多 */
+  height: 100%; 
+  display: flex;
+  align-items: center;
+}

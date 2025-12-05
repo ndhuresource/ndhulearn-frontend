@@ -1,0 +1,4 @@
+.course-list { display: grid; grid-template-columns: 1fr; gap: var(--gap); }
+@media (min-width: 800px) {
+  .course-list { grid-template-columns: 1fr 1fr; }
+}

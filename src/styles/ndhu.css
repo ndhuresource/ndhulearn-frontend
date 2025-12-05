@@ -1,0 +1,162 @@
+/* ===== 單一長幅世界（左右滑） =================== */
+.ndhu-world{
+  position: relative;
+  height: calc(100vh - 120px);
+  overflow-x: auto; overflow-y: hidden;
+  background: linear-gradient(#dfefff, #ffffff);
+  -webkit-overflow-scrolling: touch;
+}
+
+.world-content{ position: relative; width: var(--worldWpx); height: 100%; }
+.svg.world-svg{ position:absolute; inset:0; width: var(--worldWpx); height:100%; display:block; }
+
+/* 右上角關閉 */
+.ndhu-close{
+  position: sticky; top: 12px; float: right; margin: 12px 12px 0 0;
+  width: 36px; height: 36px; border-radius: 999px; border: 1px solid #cfd7ff;
+  background:#ffffff; color:#1f2a55; font-size: 20px; line-height: 34px; text-align:center;
+  box-shadow: 0 8px 30px rgba(0,0,0,.08);
+  z-index: 30; cursor: pointer;
+}
+.ndhu-close:hover{ transform: translateY(-1px); box-shadow:0 12px 36px rgba(0,0,0,.12); }
+
+/* 紙質感覆蓋層 */
+.paper{
+  position:absolute; inset:0;
+  width: var(--worldWpx); height:100%;
+  mix-blend-mode:multiply; opacity:.12; pointer-events:none;
+}
+
+/* 一條連續馬路（白色虛線） */
+.world-road{
+  position:absolute; left:0; bottom:10vh; width: var(--worldWpx); height:120px;
+  background:#d9dbe3; box-shadow: inset 0 8px 0 rgba(0,0,0,.03);
+}
+.world-road::after{
+  content:""; position:absolute; left:0; right:0; top:56px; height:8px;
+  background: repeating-linear-gradient(90deg, transparent 0 30px, #fff 30px 60px);
+  opacity:.9;
+}
+
+/* ───────────── 人物與移動 ───────────── */
+.svg-char{ width: 150px; height: auto; filter: drop-shadow(0 6px 10px rgba(0,0,0,.12)); }
+.char{
+  position:absolute; bottom: var(--y, 11vh); left:0; z-index: 10;
+  animation-name: moveRight; animation-timing-function: linear; animation-iteration-count: infinite;
+  animation-duration: 18s; animation-delay: 0s;
+  will-change: transform;
+}
+@keyframes moveRight{
+  from { transform: translateX(-20vw); }
+  to   { transform: translateX(calc(var(--worldWpx) + 20vw)); }
+}
+.char.left{ transform: scaleX(-1); animation-name: moveLeft; }
+@keyframes moveLeft{
+  from { transform: translateX(calc(var(--worldWpx) + 20vw)) scaleX(-1); }
+  to   { transform: translateX(-20vw) scaleX(-1); }
+}
+
+/* 小互動：移入暫停，點擊跳一下 */
+.char:hover{ animation-play-state: paused; }
+.char.pop{ animation: pop .25s ease; }
+@keyframes pop{ 0%{ transform: translateZ(0) scale(1); } 50%{ transform: scale(1.06); } 100%{ transform: scale(1); } }
+
+/* 四肢擺動（只給人類行走/站姿） */
+.arm-right, .arm-left, .leg-left, .leg-right{ transform-origin: center; }
+.char .arm-right{ animation: swing 1.2s ease-in-out infinite alternate; }
+.char .arm-left { animation: swing 1.2s ease-in-out infinite alternate-reverse; }
+.char .leg-left { animation: step  .9s ease-in-out infinite alternate; }
+.char .leg-right{ animation: step  .9s ease-in-out infinite alternate-reverse; }
+@keyframes swing{ from{ transform: rotate(10deg);} to{ transform: rotate(-10deg);} }
+@keyframes step { from{ transform: rotate(14deg) translateY(-2px);} to{ transform: rotate(-14deg) translateY(2px);} }
+
+/* 騎士：輪子不旋轉（更人性化的滑動） */
+.bike .wheel{ animation: none; transform-origin: center; }
+
+/* 動物微動作 */
+.dog .tail{ animation: tail-wag .9s ease-in-out infinite; transform-origin: 28px 28px; }
+@keyframes tail-wag{ 0%,100%{ transform: rotate(12deg);} 50%{ transform: rotate(-12deg);} }
+.rabbit .ear{ animation: ear-wiggle 2s ease-in-out infinite; transform-origin: center bottom; }
+@keyframes ear-wiggle{ 0%,100%{ transform: rotate(0);} 50%{ transform: rotate(6deg);} }
+.pheasant .head{ animation: head-bob 1.6s ease-in-out infinite; transform-origin: 66px 28px; }
+@keyframes head-bob{ 0%,100%{ transform: translateY(0);} 50%{ transform: translateY(-1.6px);} }
+
+/* 輕微上下擺動（所有角色） */
+.char .bob { animation: bob 2.4s ease-in-out infinite; }
+@keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-2px); } }
+
+/* ───────────── 手繪插圖定位與標籤（可點） ───────────── */
+.illo-slot{
+  position:absolute; bottom: calc(10vh + 150px);
+}
+.illo-box{ width:100%; height:100%; cursor: pointer; transition: transform .25s ease; }
+.illo-box:hover{ transform: translateY(-2px) scale(1.02); }
+.illo-label{
+  position:absolute; left:50%; transform:translate(-50%, -8px);
+  background:#111; color:#fff; border:1px solid #222;
+  padding:4px 12px; border-radius:999px; font-weight:800; font-size:13px;
+  box-shadow:0 2px 0 rgba(0,0,0,.25); white-space:nowrap; z-index:2;
+}
+.hotspot{ cursor:pointer; }
+.hotspot:focus-visible{ outline: 3px solid #7db0ff; outline-offset: 3px; }
+
+/* 錨點（提示/可跳） */
+.world-mark{
+  position:absolute; bottom: calc(10vh + 130px);
+  transform: translateX(-50%);
+  padding: .25rem .6rem; font-weight: 800; font-size: 12px;
+  border-radius: 999px; border: 1px solid #d7e4ff; background:#f6f9ff; color:#276ef1;
+  white-space: nowrap; cursor: pointer; z-index: 12;
+}
+.world-mark:hover{ background:#eef4ff; }
+
+/* 進度條（底部） */
+.world-progress{
+  position: sticky; bottom: 6px; display:flex; gap:10px; justify-content:center; padding:.5rem 0; z-index: 5;
+}
+.world-progress .tick{
+  width:10px; height:10px; background:#c9d1e5; border-radius:999px; cursor:pointer;
+}
+.world-progress .tick:hover{ background:#9aa8d4; }
+
+/* 互動資訊面板（底部抽屜） */
+.sheet-mask{
+  position: fixed; inset: 0; background: rgba(0,10,30,.25); backdrop-filter: blur(2px);
+  z-index: 40;
+}
+.sheet{
+  position: fixed; left: 50%; transform: translateX(-50%);
+  bottom: 0; width: min(860px, 92vw); max-height: 78vh;
+  background: #ffffff; border: 1px solid #d8def8; border-radius: 18px 18px 0 0;
+  box-shadow: 0 -24px 60px rgba(3,12,44,.18); z-index: 41;
+  display: grid; grid-template-rows: auto 1fr auto;
+  animation: slide-up .28s ease-out;
+}
+@keyframes slide-up { from{ transform: translate(-50%, 12px); opacity:0 } to{ transform: translate(-50%,0); opacity:1 } }
+.sheet-header{ display:flex; align-items:center; justify-content:space-between; padding: 14px 16px 8px; }
+.sheet-header h3{ margin:0; font-size: 18px; color:#13224d; }
+.sheet-close{
+  width: 34px; height: 34px; border-radius:999px; border:1px solid #cfd7ff; background:#fff; cursor:pointer;
+  font-size:18px; color:#1f2a55; box-shadow:0 6px 24px rgba(0,0,0,.08);
+}
+.sheet-body{ padding: 8px 16px 2px; display:grid; grid-template-columns: 260px 1fr; gap: 16px; align-items:center; }
+.sheet-illo{ width: 100%; height: 200px; display:flex; align-items:center; justify-content:center; }
+.sheet-desc{ margin: 6px 0 0; color:#20315e; line-height:1.6; }
+.sheet-tags{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
+.tag{ background:#eef2ff; color:#344aa0; padding:4px 10px; border-radius:999px; border:1px solid #d6defc; font-weight:700; font-size:12px; }
+.sheet-actions{ display:flex; gap:10px; padding: 10px 16px 14px; justify-content:flex-end; border-top:1px solid #eef2ff; }
+.btn{ background:#2a47d7; color:#fff; border:none; padding:8px 14px; border-radius:10px; font-weight:800; cursor:pointer; }
+.btn:hover{ filter: brightness(0.95); }
+.btn.ghost{ background:#fff; color:#2a47d7; border:1px solid #cfd7ff; }
+
+/* RWD */
+@media (max-width: 920px){
+  .sheet-body{ grid-template-columns: 1fr; }
+}
+@media (max-width: 768px){
+  .svg-char{ width: 120px; }
+  .ndhu-world{ height: calc(100vh - 100px); }
+}
+@media (prefers-reduced-motion: reduce){
+  .char, .char .bob, .tail, .ear, .head, .sheet{ animation: none !important; }
+}

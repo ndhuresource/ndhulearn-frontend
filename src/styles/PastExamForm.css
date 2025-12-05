@@ -1,0 +1,43 @@
+.exam-form {
+  border: 1px solid #e0e0e0;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+  background: #fdfdfd;
+}
+
+.exam-form h4 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  color: #333;
+}
+
+.exam-group {
+  margin-bottom: 0.75rem;
+}
+
+.exam-group label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-weight: 500;
+}
+
+.exam-group input {
+  width: 100%;
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.exam-btn {
+  padding: 0.5rem 1.2rem;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.exam-btn:hover {
+  background: #218838;
+}

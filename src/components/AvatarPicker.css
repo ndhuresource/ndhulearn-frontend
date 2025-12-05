@@ -1,0 +1,19 @@
+.avatar-picker {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: .4rem;
+  margin-top: .5rem;
+}
+.avatar-btn {
+  border: 1px solid #e2e6ef;
+  background: #fff;
+  border-radius: 8px;
+  padding: .35rem 0;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.avatar-btn.active {
+  border-color: #0a66ff;
+  box-shadow: 0 0 0 2px rgba(10,102,255,.15);
+}
+.avatar-btn:hover { background: #f6f8fb; }

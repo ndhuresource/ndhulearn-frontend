@@ -1,0 +1,3 @@
+.review-form { border:1px solid #eee; padding:12px; border-radius:10px; margin:10px 0; background:#fcfcfc; }
+.review-form .group { margin-bottom:10px; }
+.review-form textarea { width:100%; padding:8px; border:1px solid #ccc; border-radius:8px; }

@@ -1,0 +1,39 @@
+/* PastExamForm.css：考古題/筆記上傳表單 */
+.exam-form {
+  border: 1px solid #eee;
+  padding: 12px;
+  border-radius: 10px;
+  margin: 10px 0;
+  background: #fcfcfc;
+}
+
+.exam-group { margin-bottom: 10px; }
+.exam-group label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+.exam-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.exam-error {
+  background: #fdecea;
+  color: #c00;
+  padding: .5rem .75rem;
+  border-radius: 8px;
+  margin-top: .25rem;
+}
+
+.exam-btn {
+  padding: .5rem 1rem;
+  background: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.exam-btn:hover { filter: brightness(1.05); }

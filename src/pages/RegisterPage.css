@@ -1,0 +1,7 @@
+.register-page { min-height: 70vh; display:flex; align-items:center; justify-content:center; }
+.register-card { background:#fff; padding:24px; border-radius:12px; width:100%; max-width:420px; box-shadow:0 6px 16px rgba(0,0,0,.08); }
+.register-card h2 { margin-top:0; text-align:center; }
+.register-card label { display:block; margin:.5rem 0 .25rem; font-weight:600; }
+.register-card input { width:100%; padding:.6rem; border:1px solid #ccc; border-radius:8px; }
+.register-card .error { background:#fdecea; color:#b42318; padding:.5rem .75rem; border-radius:8px; margin:.5rem 0; }
+.success { text-align:center; }

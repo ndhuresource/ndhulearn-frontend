@@ -1,0 +1,64 @@
+.games-wrap { max-width: 960px; margin: 0 auto; }
+.games-sub { color: #667085; margin: .25rem 0 1rem; }
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+  gap: 1rem;
+}
+.game-card {
+  display: block;
+  padding: 1rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,.95);
+  box-shadow: 0 4px 16px rgba(0,0,0,.08);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.game-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+}
+.game-card-title { font-weight: 800; margin-bottom: .25rem; }
+.game-card-desc { color: #667085; font-size: .95rem; }
+.game-card-cta {
+  margin-top: .75rem;
+  font-weight: 700; color: #1a73e8;
+}
+
+/* TicTacToe */
+.ttt-grid {
+  margin: .75rem 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 8px;
+}
+.ttt-cell {
+  width: 90px; height: 90px;
+  font-size: 32px; font-weight: 800;
+  border-radius: 10px;
+  border: 1px solid #d7dbe1;
+  background: #fff;
+  cursor: pointer;
+}
+.ttt-reset {
+  padding: .6rem 1rem;
+  background: #1a73e8; color: #fff;
+  border: none; border-radius: 10px;
+}
+
+/* Whack-a-mole */
+.wam-grid {
+  margin: .75rem 0 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 90px);
+  gap: 8px;
+}
+.wam-cell {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  border: 1px solid #d7dbe1;
+  background: #f3f6fb;
+  font-size: 32px;
+}
+.wam-cell.up { background: #fff; }

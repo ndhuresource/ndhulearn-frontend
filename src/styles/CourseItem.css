@@ -1,0 +1,49 @@
+.course-item {
+  background: #fff;
+  border: 1px solid #e1e5eb;
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+  transition: transform 0.2s;
+}
+
+.course-item:hover {
+  transform: translateY(-2px);
+}
+
+.course-item h3 {
+  margin: 0 0 0.75rem;
+  color: #007BFF;
+}
+
+.tabs {
+  margin-bottom: 1rem;
+}
+
+.tabs button {
+  padding: 0.5rem 1.2rem;
+  border: none;
+  cursor: pointer;
+  background: #f0f2f5;
+  margin-right: 0.5rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease-in-out;
+}
+
+.tabs button:hover {
+  background: #e4e6eb;
+}
+
+.tabs .active {
+  background: #007BFF;
+  color: white;
+  font-weight: bold;
+}
+
+.review, .exam-item {
+  padding: 0.6rem 0;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+}

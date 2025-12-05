@@ -1,0 +1,91 @@
+.login-container {
+  max-width: 420px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.login-container h2 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #007bff;
+  font-weight: 600;
+}
+
+.login-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.login-form input {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.login-form input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+  outline: none;
+}
+
+.login-form button {
+  padding: 0.75rem;
+  border: none;
+  border-radius: 6px;
+  background: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.login-form button:hover {
+  background: #0056b3;
+}
+
+.login-form button:active {
+  transform: scale(0.98);
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.login-container a {
+  text-align: center;
+  display: block;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  color: #007bff;
+}
+
+.login-container a:hover {
+  text-decoration: underline;
+}
+
+/* 帳號輸入 + 固定網域的外觀 */
+.input-with-addon {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.input-with-addon .addon {
+  white-space: nowrap;
+  background: #f1f3f5;
+  color: #555;
+  border: 1px solid #d9dfe6;
+  padding: 0.6rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
