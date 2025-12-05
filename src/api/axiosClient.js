@@ -42,3 +42,6 @@ axiosClient.interceptors.request.use(
 );
 
 export default axiosClient;
+
+// 👇 新增：導出基礎 URL，供其他組件使用
+export const API_BASE_URL = baseUrl;

@@ -6,7 +6,7 @@ import { forumService } from "../services/forumService";
 import EmojiAvatar from "../components/EmojiAvatar";
 
 // 🔥 1. 加入後端網址與圖片處理函式
-const API_URL = "http://localhost:5000"; 
+import { API_BASE_URL } from "../api/axiosClient"; 
 
 const getFullImageUrl = (path) => {
   if (!path) return null;

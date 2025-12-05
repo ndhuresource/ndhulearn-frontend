@@ -4,7 +4,7 @@ import { marketplaceService } from "../services/marketplaceService";
 import "./Market.css";
 
 // 後端網址
-const API_URL = "http://localhost:5000"; 
+import { API_BASE_URL } from "../api/axiosClient"; 
 
 // 輔助函式
 const getFullImageUrl = (path) => {
