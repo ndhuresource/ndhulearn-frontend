@@ -13,6 +13,8 @@
 
 # misc
 .DS_Store
+.env.development  # <--- 新增
+.env.production   # <--- 新增
 .env.local
 .env.development.local
 .env.test.local
