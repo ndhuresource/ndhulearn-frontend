@@ -15,10 +15,10 @@ export default defineConfig({
     'import.meta.env.VITE_API_BASE_URL': JSON.stringify(RENDER_API_BASE_URL_FULL),
     'process.env.VITE_API_BASE_URL': JSON.stringify(RENDER_API_BASE_URL_FULL),
 
-    // 2. 替換硬編碼字串字面量 (關鍵：使用雙引號包裹字串作為鍵)
-    //    這將在所有 JS 檔案中，將錯誤的字串替換為正確的 URL。
-    '"http://localhost:5000/api"': JSON.stringify(RENDER_API_BASE_URL_FULL),
-    '"http://localhost:5000"': JSON.stringify(RENDER_API_BASE_URL_ROOT), 
+    // 2. 替換硬編碼字串字面量 (關鍵修正: 使用單引號包裹整個鍵)
+    //    這能確保 Vite 在解析配置檔時不會因為引號嵌套而失敗。
+    "'http://localhost:5000/api'": JSON.stringify(RENDER_API_BASE_URL_FULL),
+    "'http://localhost:5000'": JSON.stringify(RENDER_API_BASE_URL_ROOT), 
   },
   // ⬆️ 修正後的 define 配置 ⬆️
 });
