@@ -1,12 +1,20 @@
 import axios from 'axios';
 
-// 🚨 修正：確保基礎 URL 不會遺失或指向 localhost
-// Vercel 部署時，應該讀取到 HTTPS 的 Render URL
-const defaultApiUrl = 'https://ndhulearn-backend.onrender.com/api'; 
-const baseUrl = import.meta.env.VITE_API_BASE_URL || defaultApiUrl;
+// 🚨 修正：確保基礎 URL 優先使用 Vercel 的 HTTPS 地址
+
+// 1. 定義 Render 的正式 URL (使用 HTTPS)
+const RENDER_API_URL = 'https://ndhulearn-backend.onrender.com/api';
+
+// 2. 判斷基礎 URL：
+//    - 如果當前環境是部署的網站 (即 Vercel/Render)，強制使用 RENDER_API_URL。
+//    - 否則，使用 Vite 提供的環境變數 (在本地開發時會是 localhost)。
+const baseUrl = (window.location.hostname.includes('vercel.app') || window.location.hostname.includes('onrender.com'))
+    ? RENDER_API_URL 
+    : import.meta.env.VITE_API_BASE_URL;
+
 
 const axiosClient = axios.create({
-  baseURL: baseUrl, // 使用已經檢查過的 baseUrl
+  baseURL: baseUrl,
   headers: {
     'Content-Type': 'application/json',
   },
